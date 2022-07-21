@@ -2,7 +2,7 @@ package thisisct.chapter06;
 
 import java.util.*;
 
-class Fruit1 implements Comparator<Fruit1> {
+class Fruit1 implements Comparable<Fruit1> {
 
     private String name;
     private int cnt;
@@ -21,13 +21,9 @@ class Fruit1 implements Comparator<Fruit1> {
     }
 
     @Override
-    public int compare(Fruit1 o1, Fruit1 o2) {
-        if(o1.getCnt() < o2.getCnt()) return -1;
-        if(o1.getCnt() > o2.getCnt()) return 1;
-        return 0;
+    public int compareTo(Fruit1 o) {
+        return Integer.compare(this.cnt, o.getCnt());
     }
-
-
 }
 
 public class java5int {
@@ -38,11 +34,10 @@ public class java5int {
         fruitList.add(new Fruit1("당근", 3));
         fruitList.add(new Fruit1("사과", 5));
 
-        fruitList.sort();
 
-        Collections.sort(fruitList, );
+        Collections.sort(fruitList);
 
-        fruitList.stream()
+        fruitList
                 .forEach(f -> System.out.print("(" + f.getName() + ", " + f.getCnt() + "), "));
     }
 }

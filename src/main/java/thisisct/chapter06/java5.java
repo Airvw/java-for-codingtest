@@ -31,9 +31,10 @@ public class java5 {
         fruitList.add(new Fruit("당근", 3));
         fruitList.add(new Fruit("사과", 5));
 
-        fruitList.sort((o1, o2) -> o1.getCnt().compareTo(o2.getCnt()));
+        // List<E>의 default method인 sort를 사용. Collections.sort(fruitList, Comparator)를 활용하는 것과 같은 의미.
+        fruitList.sort(Comparator.comparing(Fruit::getCnt));
 
-        fruitList.stream()
+        fruitList
                 .forEach(f -> System.out.print("(" + f.getName() + ", " + f.getCnt() + "), "));
     }
 }
